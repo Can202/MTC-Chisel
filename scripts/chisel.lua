@@ -78,7 +78,34 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 			end
 		end
 		if node.name == "default:cobble" then
-			node.name = "mtc_chisel:cobblestone_1"
+			node.name = "mtc_chisel:cobblestone_12"
+		end
+		minetest.swap_node(pos, node)
+		minetest.check_single_for_falling(pos)
+end
+local function zero_handler(player_name, node, itemstack, digparams)
+	local pos = dug_node[player_name]
+	if not pos then return end
+
+		local ndef = minetest.registered_nodes[node.name]
+		if ndef then
+			local item = ItemStack(ndef.drop or node.name)
+			local inv = minetest.get_inventory({type="player", name=player_name})
+			if inv and inv:room_for_item("main", item) then
+				local taken = inv:remove_item("main", item)
+			else
+				for _,obj in ipairs(minetest.get_objects_inside_radius(pos, 1)) do
+					obj:remove()
+					break
+				end
+			end
+		end
+		for i = 1,12 do
+			local original = "mtc_chisel:cobblestone_" .. i
+			if node.name == original then
+				node.name = "default:cobble"
+				break
+			end
 		end
 		minetest.swap_node(pos, node)
 		minetest.check_single_for_falling(pos)
@@ -130,5 +157,29 @@ minetest.register_tool("mtc_chisel:left_chisel", {
 minetest.register_craft({
 	type="shapeless",
 	output = "mtc_chisel:left_chisel",
+	recipe = {"mtc_chisel:chisel","bucket:bucket_water"},
+	replacements = {{"bucket:bucket_water", "bucket:bucket_empty"}},
+})
+
+
+-- Zero-Chisel
+minetest.register_tool("mtc_chisel:zero_chisel", {
+	description = S("Zero Chisel"),
+	inventory_image = "mtc_chisel_zero_chisel.png",
+	groups = {chisel_chisel=1},
+	tool_capabilities = {
+		groupcaps={
+			cracky = {times={[1]=2.0, [2]=1.0, [3]=0.50}, uses=30, maxlevel=3},
+		},
+	},
+	after_use = function(itemstack, user, node, digparams)
+		minetest.after(0.01, zero_handler, user:get_player_name(), node)
+		itemstack:add_wear(digparams.wear)
+		return itemstack
+	end,
+})
+minetest.register_craft({
+	type="shapeless",
+	output = "mtc_chisel:zero_chisel",
 	recipe = {"mtc_chisel:chisel","default:gold_ingot"},
 })
