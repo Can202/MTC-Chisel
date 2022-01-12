@@ -2,6 +2,7 @@
 local S = minetest.get_translator("mtc_chisel")
 
 local cobblestone_count = 21
+local brick_count = 1
 
 local dug_node = {}
 minetest.register_on_dignode(function(pos, oldnode, digger)
@@ -27,6 +28,7 @@ local function handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
+		--Cobblestone
 		for i = 1,cobblestone_count do
 			local j = i+1
 
@@ -43,6 +45,24 @@ local function handler(player_name, node, itemstack, digparams)
 		end
 		if node.name == "default:cobble" then
 			node.name = "mtc_chisel:cobblestone_1"
+		end
+		--Brick
+		for i = 1,brick_count do
+			local j = i+1
+
+			if j == brick_count+1 then
+				j = 1
+			end
+
+			local original = "mtc_chisel:brick_" .. i
+			local next = "mtc_chisel:brick_" .. j
+			if node.name == original then
+				node.name = next
+				break
+			end
+		end
+		if node.name == "default:brick" then
+			node.name = "mtc_chisel:brick_1"
 		end
 		minetest.swap_node(pos, node)
 		minetest.check_single_for_falling(pos)
@@ -65,6 +85,7 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
+		--Cobblestone
 		for i = cobblestone_count,1,-1 do
 			local j = i-1
 
@@ -81,6 +102,24 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 		end
 		if node.name == "default:cobble" then
 			node.name = "mtc_chisel:cobblestone_" .. cobblestone_count
+		end
+		--Brick
+		for i = brick_count,1,-1 do
+			local j = i-1
+
+			if j == 0 then
+				j = brick_count
+			end
+
+			local original = "mtc_chisel:brick_" .. i
+			local next = "mtc_chisel:brick_" .. j
+			if node.name == original then
+				node.name = next
+				break
+			end
+		end
+		if node.name == "default:brick" then
+			node.name = "mtc_chisel:brick_" .. brick_count
 		end
 		minetest.swap_node(pos, node)
 		minetest.check_single_for_falling(pos)
@@ -102,10 +141,19 @@ local function zero_handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
+		--Cobblestone
 		for i = 1,cobblestone_count do
 			local original = "mtc_chisel:cobblestone_" .. i
 			if node.name == original then
 				node.name = "default:cobble"
+				break
+			end
+		end
+		--Brick
+		for i = 1,brick_count do
+			local original = "mtc_chisel:brick_" .. i
+			if node.name == original then
+				node.name = "default:brick"
 				break
 			end
 		end
