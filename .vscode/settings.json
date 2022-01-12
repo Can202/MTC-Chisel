@@ -1,5 +1,7 @@
 {
     "Lua.diagnostics.globals": [
-        "minetest"
+        "minetest",
+        "default",
+        "ItemStack"
     ]
 }

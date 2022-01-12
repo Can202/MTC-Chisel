@@ -25,10 +25,10 @@ local function handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
-		for i = 1,11 do
+		for i = 1,12 do
 			local j = i+1
 
-			if j == 12 then
+			if j == 13 then
 				j = 1
 			end
 

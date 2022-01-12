@@ -197,6 +197,24 @@ minetest.register_craft({
 	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
 })
 
+-- Cobblestone 12
+minetest.register_node("mtc_chisel:cobblestone_12", {
+	description = S("Cobblestone (Chaotic Bricks)"),
+	tiles = {"mtc_chisel_cobblestone_12.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_12 4",
+	recipe = {
+        {"","","default:cobble"},
+		{"default:cobble","mtc_chisel:chisel",""},
+		{"","default:cobble","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
 -- Back to default
 minetest.register_craft({
 	type = "shapeless",
