@@ -215,15 +215,7 @@ minetest.register_craft({
 	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
 })
 
--- Back to default
-minetest.register_craft({
-	type = "shapeless",
-	output = "default:cobble",
-	recipe = {"mtc_chisel:chisel","group:chisel_cobble"},
-	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
-})
-
-
+-- Cobblestone 13
 minetest.register_node("mtc_chisel:cobblestone_13", {
 	description = S("Cobblestone (Tiles Large)"),
 	is_ground_content = false,
@@ -243,5 +235,165 @@ minetest.register_craft({
 		{"default:cobble","mtc_chisel:chisel",""},
 		{"default:cobble","","default:cobble"},
 	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+-- Cobblestone 14
+minetest.register_node("mtc_chisel:cobblestone_14", {
+	description = S("Cobblestone (Triple Bricks)"),
+	tiles = {"mtc_chisel_cobblestone_14.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_14 8",
+	recipe = {
+        {"default:cobble","default:cobble","default:cobble"},
+		{"mtc_chisel:chisel","default:cobble","default:cobble"},
+		{"default:cobble","default:cobble","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+-- Cobblestone 15
+minetest.register_node("mtc_chisel:cobblestone_15", {
+	description = S("Cobblestone (Prism)"),
+	tiles = {"mtc_chisel_cobblestone_15.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_15 5",
+	recipe = {
+        {"","default:cobble",""},
+		{"default:cobble","mtc_chisel:chisel","default:cobble"},
+		{"default:cobble","","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+-- Cobblestone 16
+minetest.register_node("mtc_chisel:cobblestone_16", {
+	description = S("Cobblestone (Weaver)"),
+	tiles = {"mtc_chisel_cobblestone_16.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_16 5",
+	recipe = {
+        {"","default:cobble",""},
+		{"mtc_chisel:chisel","default:cobble","default:cobble"},
+		{"default:cobble","","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+
+-- Cobblestone 17
+minetest.register_node("mtc_chisel:cobblestone_17", {
+	description = S("Cobblestone (Soft Bricks)"),
+	tiles = {"mtc_chisel_cobblestone_17.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_17 8",
+	recipe = {
+        {"default:cobble","default:cobble","default:cobble"},
+		{"default:cobble","default:cobble","mtc_chisel:chisel"},
+		{"default:cobble","default:cobble","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+
+-- Cobblestone 18
+minetest.register_node("mtc_chisel:cobblestone_18", {
+	description = S("Cobblestone (Solid Bricks)"),
+	tiles = {"mtc_chisel_cobblestone_18.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_18 8",
+	recipe = {
+        {"default:cobble","mtc_chisel:chisel","default:cobble"},
+		{"default:cobble","default:cobble","default:cobble"},
+		{"default:cobble","default:cobble","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+
+-- Cobblestone 19
+minetest.register_node("mtc_chisel:cobblestone_19", {
+	description = S("Cobblestone (Small Bricks)"),
+	tiles = {"mtc_chisel_cobblestone_19.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_19 8",
+	recipe = {
+        {"default:cobble","default:cobble","default:cobble"},
+		{"default:cobble","default:cobble","default:cobble"},
+		{"default:cobble","mtc_chisel:chisel","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+
+-- Cobblestone 20
+minetest.register_node("mtc_chisel:cobblestone_20", {
+	description = S("Cobblestone (Raw)"),
+	tiles = {"mtc_chisel_cobblestone_20.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_20 4",
+	recipe = {
+        {"default:cobble","","default:cobble"},
+		{"mtc_chisel:chisel","",""},
+		{"default:cobble","","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+
+-- Cobblestone 21
+minetest.register_node("mtc_chisel:cobblestone_21", {
+	description = S("Cobblestone (Ornate)"),
+	tiles = {"mtc_chisel_cobblestone_21.png"},
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_21 4",
+	recipe = {
+        {"","default:cobble",""},
+		{"default:cobble","mtc_chisel:chisel","default:cobble"},
+		{"","default:cobble",""},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})
+
+
+
+-- Back to default
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:cobble",
+	recipe = {"mtc_chisel:chisel","group:chisel_cobble"},
 	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
 })
