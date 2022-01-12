@@ -222,3 +222,26 @@ minetest.register_craft({
 	recipe = {"mtc_chisel:chisel","group:chisel_cobble"},
 	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
 })
+
+
+minetest.register_node("mtc_chisel:cobblestone_13", {
+	description = S("Cobblestone (Tiles Large)"),
+	is_ground_content = false,
+	groups = {chisel_cobble=1,cracky=3,stone=2},
+	sounds = default.node_sound_stone_defaults(),
+	drawtype = "glasslike_framed_optional",
+	tiles = {"mtc_chisel_cobblestone_13.png", "mtc_chisel_cobblestone_13_connect.png"},
+	use_texture_alpha = "clip", -- only needed for stairs API
+	paramtype = "light",
+	paramtype2 = "glasslikeliquidlevel",
+	sunlight_propagates = true,
+})
+minetest.register_craft({
+	output = "mtc_chisel:cobblestone_13 4",
+	recipe = {
+        {"","default:cobble",""},
+		{"default:cobble","mtc_chisel:chisel",""},
+		{"default:cobble","","default:cobble"},
+	},
+	replacements = {{"mtc_chisel:chisel", "mtc_chisel:chisel"}},
+})

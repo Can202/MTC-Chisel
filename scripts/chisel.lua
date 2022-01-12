@@ -1,6 +1,8 @@
 -- Load support for MT game translation.
 local S = minetest.get_translator("mtc_chisel")
 
+local cobblestone_count = 13
+
 local dug_node = {}
 minetest.register_on_dignode(function(pos, oldnode, digger)
 	if not digger then return end
@@ -25,10 +27,10 @@ local function handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
-		for i = 1,12 do
+		for i = 1,cobblestone_count do
 			local j = i+1
 
-			if j == 13 then
+			if j == cobblestone_count+1 then
 				j = 1
 			end
 
@@ -63,11 +65,11 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
-		for i = 12,1,-1 do
+		for i = cobblestone_count,1,-1 do
 			local j = i-1
 
 			if j == 0 then
-				j = 12
+				j = cobblestone_count
 			end
 
 			local original = "mtc_chisel:cobblestone_" .. i
@@ -78,7 +80,7 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 			end
 		end
 		if node.name == "default:cobble" then
-			node.name = "mtc_chisel:cobblestone_12"
+			node.name = "mtc_chisel:cobblestone_" .. cobblestone_count
 		end
 		minetest.swap_node(pos, node)
 		minetest.check_single_for_falling(pos)
@@ -100,7 +102,7 @@ local function zero_handler(player_name, node, itemstack, digparams)
 				end
 			end
 		end
-		for i = 1,12 do
+		for i = 1,cobblestone_count do
 			local original = "mtc_chisel:cobblestone_" .. i
 			if node.name == original then
 				node.name = "default:cobble"
