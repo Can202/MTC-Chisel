@@ -1,7 +1,7 @@
 -- Load support for MT game translation.
 local S = minetest.get_translator("mtc_chisel")
 
-local cobblestone_count = 14
+local cobblestone_count = 21
 
 local dug_node = {}
 minetest.register_on_dignode(function(pos, oldnode, digger)
