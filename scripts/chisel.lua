@@ -1,5 +1,5 @@
 -- Load support for MT game translation.
-local S = minetest.get_translator("mtc_chisel")
+local S = minetest.get_translator("mc2_mtc_chisel")
 
 local cobblestone_count = 21
 local brick_count = 1
@@ -36,15 +36,15 @@ local function handler(player_name, node, itemstack, digparams)
 				j = 1
 			end
 
-			local original = "mtc_chisel:cobblestone_" .. i
-			local next = "mtc_chisel:cobblestone_" .. j
+			local original = "mc2_mtc_chisel:cobblestone_" .. i
+			local next = "mc2_mtc_chisel:cobblestone_" .. j
 			if node.name == original then
 				node.name = next
 				break
 			end
 		end
-		if node.name == "default:cobble" then
-			node.name = "mtc_chisel:cobblestone_1"
+		if node.name == "mcl_core:cobble" then
+			node.name = "mc2_mtc_chisel:cobblestone_1"
 		end
 		--Brick
 		for i = 1,brick_count do
@@ -54,15 +54,15 @@ local function handler(player_name, node, itemstack, digparams)
 				j = 1
 			end
 
-			local original = "mtc_chisel:brick_" .. i
-			local next = "mtc_chisel:brick_" .. j
+			local original = "mc2_mtc_chisel:brick_" .. i
+			local next = "mc2_mtc_chisel:brick_" .. j
 			if node.name == original then
 				node.name = next
 				break
 			end
 		end
-		if node.name == "default:brick" then
-			node.name = "mtc_chisel:brick_1"
+		if node.name == "mcl_core:brick_block" then
+			node.name = "mc2_mtc_chisel:brick_1"
 		end
 		minetest.swap_node(pos, node)
 		minetest.check_single_for_falling(pos)
@@ -93,15 +93,15 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 				j = cobblestone_count
 			end
 
-			local original = "mtc_chisel:cobblestone_" .. i
-			local next = "mtc_chisel:cobblestone_" .. j
+			local original = "mc2_mtc_chisel:cobblestone_" .. i
+			local next = "mc2_mtc_chisel:cobblestone_" .. j
 			if node.name == original then
 				node.name = next
 				break
 			end
 		end
-		if node.name == "default:cobble" then
-			node.name = "mtc_chisel:cobblestone_" .. cobblestone_count
+		if node.name == "mcl_core:cobble" then
+			node.name = "mc2_mtc_chisel:cobblestone_" .. cobblestone_count
 		end
 		--Brick
 		for i = brick_count,1,-1 do
@@ -111,15 +111,15 @@ local function reverse_handler(player_name, node, itemstack, digparams)
 				j = brick_count
 			end
 
-			local original = "mtc_chisel:brick_" .. i
-			local next = "mtc_chisel:brick_" .. j
+			local original = "mc2_mtc_chisel:brick_" .. i
+			local next = "mc2_mtc_chisel:brick_" .. j
 			if node.name == original then
 				node.name = next
 				break
 			end
 		end
-		if node.name == "default:brick" then
-			node.name = "mtc_chisel:brick_" .. brick_count
+		if node.name == "mcl_core:brick_block" then
+			node.name = "mc2_mtc_chisel:brick_" .. brick_count
 		end
 		minetest.swap_node(pos, node)
 		minetest.check_single_for_falling(pos)
@@ -143,17 +143,17 @@ local function zero_handler(player_name, node, itemstack, digparams)
 		end
 		--Cobblestone
 		for i = 1,cobblestone_count do
-			local original = "mtc_chisel:cobblestone_" .. i
+			local original = "mc2_mtc_chisel:cobblestone_" .. i
 			if node.name == original then
-				node.name = "default:cobble"
+				node.name = "mcl_core:cobble"
 				break
 			end
 		end
 		--Brick
 		for i = 1,brick_count do
-			local original = "mtc_chisel:brick_" .. i
+			local original = "mc2_mtc_chisel:brick_" .. i
 			if node.name == original then
-				node.name = "default:brick"
+				node.name = "mcl_core:brick_block"
 				break
 			end
 		end
@@ -164,9 +164,9 @@ end
 
 
 -- Chisel
-minetest.register_tool("mtc_chisel:chisel", {
+minetest.register_tool("mc2_mtc_chisel:chisel", {
 	description = S("Chisel"),
-	inventory_image = "mtc_chisel_chisel.png",
+	inventory_image = "mc2_mtc_chisel_chisel.png",
 	groups = {chisel_chisel=1},
 	tool_capabilities = {
 		groupcaps={
@@ -180,7 +180,7 @@ minetest.register_tool("mtc_chisel:chisel", {
 	end,
 })
 minetest.register_craft({
-	output = "mtc_chisel:chisel",
+	output = "mc2_mtc_chisel:chisel",
 	recipe = {
 		{"","","default:steel_ingot"},
 		{"","default:steel_ingot",""},
@@ -189,9 +189,9 @@ minetest.register_craft({
 })
 
 -- Left-Chisel
-minetest.register_tool("mtc_chisel:left_chisel", {
+minetest.register_tool("mc2_mtc_chisel:left_chisel", {
 	description = S("Left Chisel"),
-	inventory_image = "mtc_chisel_left_chisel.png",
+	inventory_image = "mc2_mtc_chisel_left_chisel.png",
 	groups = {chisel_chisel=1},
 	tool_capabilities = {
 		groupcaps={
@@ -206,16 +206,16 @@ minetest.register_tool("mtc_chisel:left_chisel", {
 })
 minetest.register_craft({
 	type="shapeless",
-	output = "mtc_chisel:left_chisel",
-	recipe = {"mtc_chisel:chisel","bucket:bucket_water"},
+	output = "mc2_mtc_chisel:left_chisel",
+	recipe = {"mc2_mtc_chisel:chisel","bucket:bucket_water"},
 	replacements = {{"bucket:bucket_water", "bucket:bucket_empty"}},
 })
 
 
 -- Zero-Chisel
-minetest.register_tool("mtc_chisel:zero_chisel", {
+minetest.register_tool("mc2_mtc_chisel:zero_chisel", {
 	description = S("Zero Chisel"),
-	inventory_image = "mtc_chisel_zero_chisel.png",
+	inventory_image = "mc2_mtc_chisel_zero_chisel.png",
 	groups = {chisel_chisel=1},
 	tool_capabilities = {
 		groupcaps={
@@ -230,6 +230,6 @@ minetest.register_tool("mtc_chisel:zero_chisel", {
 })
 minetest.register_craft({
 	type="shapeless",
-	output = "mtc_chisel:zero_chisel",
-	recipe = {"mtc_chisel:chisel","default:gold_ingot"},
+	output = "mc2_mtc_chisel:zero_chisel",
+	recipe = {"mc2_mtc_chisel:chisel","default:gold_ingot"},
 })

@@ -4,7 +4,7 @@ MTC Chisel by Can202
 
 ]]
 
-local modpath = minetest.get_modpath("mtc_chisel")
+local modpath = minetest.get_modpath("mc2_mtc_chisel")
 
 dofile(modpath.."/scripts/chisel.lua")
 dofile(modpath.."/scripts/cobblestone.lua")
